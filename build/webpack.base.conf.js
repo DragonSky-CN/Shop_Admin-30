@@ -32,6 +32,7 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   resolve: {
+    // 配置了文件后缀为 .js/.vue/.json 的文件可以省略后缀名
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
