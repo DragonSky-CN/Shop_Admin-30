@@ -11,10 +11,11 @@
         <el-input v-model="form.username" placeholder="请输入用户名~"></el-input>
       </el-form-item>
       <el-form-item label="密码" prop="password">
-        <el-input v-model="form.password" placeholder="请输入密码~" type="password"></el-input>
+        <!-- 增加回车登录功能 -->
+        <el-input v-model="form.password" placeholder="请输入密码~" type="password" @keyup.enter.native="loginFn"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="loginBtn">登录</el-button>
+        <el-button type="primary" @click="loginFn">登录</el-button>
         <el-button @click="resetForm">重置</el-button>
       </el-form-item>
     </el-form>
@@ -48,7 +49,7 @@ export default {
       // 重置表单
       this.$refs.form.resetFields()
     },
-    loginBtn() {
+    loginFn() {
       // 对整个表单进行校验
       this.$refs.form.validate((valid, obj) => {
         // console.log(valid, obj)
@@ -93,7 +94,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 // lang="less"：表示使用 lass 写 css【还支持 sass、stylus】
 // VUE 脚手架已经配置过 less、sass、stylus ，只是没有安装依赖包而已，所以需要自行根据需求安装依赖包
 .login {
@@ -120,7 +121,7 @@ export default {
       border: 10px solid #fff;
     }
     .el-button:nth-child(2) {
-      margin-left: 80px;
+      margin-left: 100px;
     }
     // + 或者 ~ 都可以使用
     // .el-button + .el-button {
